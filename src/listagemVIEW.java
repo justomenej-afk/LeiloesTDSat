@@ -137,11 +137,15 @@ public class listagemVIEW extends javax.swing.JFrame {
 
     private void btnVenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVenderActionPerformed
         String id = id_produto_venda.getText();
-        
+
+        int indice = Integer.parseInt(id) - 1;
+
         ProdutosDAO produtosdao = new ProdutosDAO();
-        
-        //produtosdao.venderProduto(Integer.parseInt(id));
+        produtosdao.venderProduto(indice);
+
         listarProdutos();
+
+   
     }//GEN-LAST:event_btnVenderActionPerformed
 
     private void btnVendasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVendasActionPerformed
@@ -213,6 +217,7 @@ public class listagemVIEW extends javax.swing.JFrame {
 System.out.println("TAMANHO DA LISTA: " + listagem.size());
             for(int i = 0; i < listagem.size(); i++){
                 model.addRow(new Object[]{
+                    i + 1,
                     listagem.get(i).getId(),
                     listagem.get(i).getNome(),
                     listagem.get(i).getValor(),
